@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/select";
 import { subjects } from "@/constants";
 import { Textarea } from "./ui/textarea";
+import { redirect } from "next/navigation";
+import { createCompanion } from "@/lib/actions/companion.actions";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Companion is required" }),
@@ -29,12 +31,14 @@ const formSchema = z.object({
   topic: z.string().min(1, { message: "Topic is required" }),
   voice: z.string().min(1, { message: "Voice is required" }),
   style: z.string().min(1, { message: "Style is required" }),
-  duration: z.number().min(1, { message: "Duration is required" }),
+  duration: z.coerce.number().min(1, { message: "Duration is required" }),
 });
+
+type FormData = z.infer<typeof formSchema>;
 
 const CompanionForm = () => {
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -42,13 +46,22 @@ const CompanionForm = () => {
       topic: "",
       voice: "",
       style: "",
-      duration: 15,
+      duration: 15, // Default duration in minutes
     },
   });
 
   // 2. Define a submit handler.
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: FormData) => {
+    const companion = await createCompanion(values);
+
+    if (companion) {
+      // Redirect or show success message
+      redirect(`/companions/${companion.id}`);
+    } else {
+      // Handle error case
+      console.log("Failed to create companion");
+      redirect("/");
+    }
   };
 
   return (
