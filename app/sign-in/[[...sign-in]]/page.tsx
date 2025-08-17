@@ -1,6 +1,6 @@
 import { SignIn } from '@clerk/nextjs'
 
-const page = () => {
+const Page = () => {
   return (
     <main className='flex items-center justify-center'>
         <SignIn />
@@ -8,4 +8,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
