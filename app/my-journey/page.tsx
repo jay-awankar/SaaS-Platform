@@ -13,6 +13,7 @@ import {
 } from "@/lib/actions/companion.actions";
 import Image from "next/image";
 import CompanionsList from "@/components/CompanionList";
+import FloatButton from "@/components/FloatButton";
 
 const Profile = async () => {
   const user = await currentUser();
@@ -24,7 +25,7 @@ const Profile = async () => {
   const bookmarkedCompanions = await getBookmarkedCompanions(user.id);
 
   return (
-    <main className="min-lg:w-3/4">
+    <main className="min-h-screen bg-transparent">
       <section className="flex justify-between gap-4 max-sm:flex-col items-center">
         <div className="flex gap-4 items-center">
           <Image
@@ -32,6 +33,7 @@ const Profile = async () => {
             alt={user.firstName!}
             width={110}
             height={110}
+            className="rounded-lg"
           />
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-2xl">
@@ -43,7 +45,7 @@ const Profile = async () => {
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="border border-black rouded-lg p-3 gap-2 flex flex-col h-fit">
+          <div className="border border-black rounded-lg p-3 gap-2 flex flex-col h-fit">
             <div className="flex gap-2 items-center">
               <Image
                 src="/icons/check.svg"
@@ -55,7 +57,7 @@ const Profile = async () => {
             </div>
             <div>Lessons completed</div>
           </div>
-          <div className="border border-black rouded-lg p-3 gap-2 flex flex-col h-fit">
+          <div className="border border-black rounded-lg p-3 gap-2 flex flex-col h-fit">
             <div className="flex gap-2 items-center">
               <Image src="/icons/cap.svg" alt="cap" width={22} height={22} />
               <p className="text-2xl font-bold">{companions.length}</p>
@@ -96,6 +98,7 @@ const Profile = async () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <FloatButton />
     </main>
   );
 };

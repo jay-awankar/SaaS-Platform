@@ -7,6 +7,7 @@ import Image from "next/image";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import soundwaves from "@/constants/soundwaves.json";
 import { addToSessionHistory } from "@/lib/actions/companion.actions";
+import { FlickeringGrid } from "./magicui/flickering-grid";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -106,7 +107,18 @@ const CompanionComponent = ({
   return (
     <section className="flex flex-col h-[95vh]">
       <section className="flex gap-8 max-sm:flex-col">
-        <div className="companion-section">
+        <div className="companion-section relative p-6 w-full overflow-hidden rounded-lg bg-transparent">
+          <FlickeringGrid
+            className="absolute inset-0 z-0 min-w-full"
+            squareSize={4}
+            gridGap={6}
+            color="#4F3F8A"
+            maxOpacity={0.15}
+            flickerChance={0.2}
+            height={800}
+            width={1600}
+          />
+
           <div
             className="companion-avatar"
             style={{ backgroundColor: getSubjectColor(subject) }}

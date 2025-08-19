@@ -1,4 +1,5 @@
 import CompanionCard from "@/components/CompanionCard";
+import FloatButton from "@/components/FloatButton";
 import SearchInput from "@/components/SearchInput";
 import SubjectFilter from "@/components/SubjectFilter";
 import { getAllCompanions } from "@/lib/actions/companion.actions";
@@ -13,7 +14,7 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
   const companions = await getAllCompanions({ subject, topic })
 
   return (
-    <main>
+    <main className="bg-transparent min-h-screen">
       <section className="flex justify-between gap-4 max-sm:flex-col">
         <h1>Companion Library</h1>
         <div className="flex gap-4">
@@ -26,6 +27,7 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
           <CompanionCard key={companion.id} {...companion} color={getSubjectColor(companion.subject)} />
         ))}
       </section>
+      <FloatButton />
     </main>
   )
 }

@@ -22,10 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bricolage.variable} antialiased`}>
+      <body className={`${bricolage.variable} antialiased site-background min-h-screen bg-white/5`}>
         <ClerkProvider appearance={ {variables: { colorPrimary: '#fe5933' }}}>
-          <Navbar />
-          {children}
+          <section className="background-theme">
+            <Navbar />
+            {children}
+          </section>
         </ClerkProvider>
       </body>
     </html>

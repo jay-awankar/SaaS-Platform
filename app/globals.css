@@ -136,11 +136,23 @@ body {
   h1 {
     @apply text-3xl font-bold;
   }
+  .site-background {
+    background-image: url("/images/background-theme.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: var(--background);
+    backface-visibility: 50%;
+  }
 }
 
 @layer components {
+  .background-theme {
+    @apply bg-white/50 backdrop-blur-sm min-w-full p-0;
+  }
   .home-section {
-    @apply flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center;
+    @apply flex gap-4 justify-between items-start w-full max-lg:flex-col-reverse max-lg:items-center mt-2;
   }
   .companions-grid {
     @apply flex flex-wrap gap-4 w-full max-md:justify-center;
@@ -170,7 +182,10 @@ body {
     @apply bg-primary text-white rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
   }
   .navbar {
-    @apply flex items-center justify-between mx-auto w-full px-14 py-4 bg-white max-sm:px-4;
+    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4 shadow-lg bg-white rounded-4xl sticky top-0 z-50;
+  }
+  .nav-items {
+    @apply hover:text-gray-600 transition-all duration-200;
   }
   .btn-signin {
     @apply border border-black rounded-4xl px-4 py-2.5 text-sm font-semibold flex items-center gap-2 cursor-pointer;
