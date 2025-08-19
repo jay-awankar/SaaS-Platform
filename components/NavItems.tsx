@@ -26,8 +26,8 @@ const NavItems = () => {
               <Image
                 src={`/icons/${label}.svg`}
                 alt={label}
-                width={30}
-                height={30}
+                width={40}
+                height={40}
                 className={`rounded-full  bg-[#F5E6FE] border-none`}
               />
               <span className="hidden sm:hidden md:block">

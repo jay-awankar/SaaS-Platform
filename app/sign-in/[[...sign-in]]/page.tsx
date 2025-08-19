@@ -2,7 +2,7 @@ import { SignIn } from '@clerk/nextjs'
 
 const Page = () => {
   return (
-    <main className='flex items-center justify-center'>
+    <main className='flex items-center min-h-screen bg-transparent'>
         <SignIn />
     </main>
   )

@@ -10,7 +10,7 @@ import {
 
 const Navbar = () => {
   return (
-    <nav className="navbar gap-3">
+    <nav className="navbar gap-8">
       <Link href="/">
         <div className="flex items-center gap-2.5 cursor-pointer">
             <Image 
@@ -18,10 +18,11 @@ const Navbar = () => {
                 alt="Logo"
                 width={200}
                 height={44}
+                className="max-sm:w-30"
             />
         </div>
       </Link>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-5 lg:gap-8">
         <NavItems />
         <SignedOut>
           <SignInButton>

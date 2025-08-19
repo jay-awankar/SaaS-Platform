@@ -1,6 +1,7 @@
 "use client";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import { FlickeringGrid } from "./magicui/flickering-grid";
+import Image from "next/image";
 
 const texts = [
   "Build it, Learn it, Use it",
@@ -15,7 +16,7 @@ const texts = [
 
 const HeroSection = () => {
   return (
-    <div className="relative p-8 w-full overflow-hidden rounded-lg bg-transparent">
+    <div className="relative py-8 w-full flex flex-col items-center justify-center overflow-hidden rounded-lg bg-transparent">
       <FlickeringGrid
         className="absolute inset-0 z-0 min-w-full"
         squareSize={5}
@@ -25,6 +26,13 @@ const HeroSection = () => {
         flickerChance={0.3}
         height={800}
         width={1600}
+      />
+      <Image
+        src="/images/hero-image.png"
+        alt="hero-image"
+        width={150}
+        height={150}
+        className={` bg-[#F5E6FE] border-none text-center justify-center`}
       />
       <MorphingText texts={texts} />
     </div>
